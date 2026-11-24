@@ -6,6 +6,7 @@ import aiohttp
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_HOST, CONF_PASSWORD, EVENT_HOMEASSISTANT_STOP, Platform
 from homeassistant.core import Event, HomeAssistant
+from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
 
@@ -37,7 +38,16 @@ async def async_setup_entry(hass: HomeAssistant, entry: GoalakeConfigEntry) -> b
     session = async_create_clientsession(hass, cookie_jar=aiohttp.DummyCookieJar())
     client = GoalakeClient(session, entry.data[CONF_HOST], entry.data[CONF_PASSWORD])
     coordinator = GoalakeCoordinator(hass, entry, client)
-    await coordinator.async_config_entry_first_refresh()
+    try:
+        await coordinator.async_config_entry_first_refresh()
+    except ConfigEntryNotReady as err:
+        # older Home Assistant versions do not pass the translated reason on, so do it here
+        cause = err.__cause__
+        raise ConfigEntryNotReady(
+            translation_domain=DOMAIN,
+            translation_key=getattr(cause, "translation_key", None) or "cannot_connect",
+            translation_placeholders=getattr(cause, "translation_placeholders", None),
+        ) from err
     entry.runtime_data = coordinator
 
     _register_device(hass, entry, coordinator.data)
