@@ -1,0 +1,19 @@
+<!doctype html>
+<!-- Demo page for the screenshots: loads the built bundle with a fake `hass` object and sample data (no Home Assistant). -->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>PoE Switch demo</title>
+    <style>
+      html, body { margin: 0; min-height: 100%; font-family: Roboto, system-ui, sans-serif; }
+      body.dark { background: #111318; --primary-background-color: #111318; --card-background-color: #1c1f26; --secondary-background-color: #262a33; --divider-color: #3a3f4b; --primary-text-color: #e6e9ef; --secondary-text-color: #9aa3b2; --primary-color: #03a9f4; --accent-color: #ff9800; }
+      body.light { background: #f1f3f6; --primary-background-color: #f1f3f6; --card-background-color: #ffffff; --secondary-background-color: #e8ebf0; --divider-color: #d5dae2; --primary-text-color: #1c1f26; --secondary-text-color: #5b6475; --primary-color: #03a9f4; --accent-color: #ff9800; }
+      #stage { padding: 0; }
+      #stage.cards { display: grid; gap: 16px; padding: 24px; max-width: 520px; margin: 0 auto; }
+    </style>
+  </head>
+  <body>
+    <div id="stage"></div>
+    <script type="module" src="demo.js"></script>
+  </body>
+</html>

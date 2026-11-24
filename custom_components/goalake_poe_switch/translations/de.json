@@ -1,0 +1,162 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "PoE-Switch hinzufügen",
+        "description": "Gib die Adresse und das Web-Passwort des Switches ein. Der Switch erlaubt nur eine Anmeldung gleichzeitig: Eine Browser-Sitzung kann diese Integration aussperren.",
+        "data": {
+          "host": "IP-Adresse oder Hostname",
+          "password": "Passwort"
+        }
+      },
+      "discovery_confirm": {
+        "title": "PoE-Switch gefunden",
+        "description": "Unter {host} wurde ein PoE-Switch gefunden. Gib sein Web-Passwort ein.",
+        "data": {
+          "password": "Passwort"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Passwort erforderlich",
+        "description": "Der Switch unter {host} hat das Passwort abgelehnt. Gib das aktuelle Web-Passwort ein.",
+        "data": {
+          "password": "Passwort"
+        }
+      },
+      "reconfigure": {
+        "title": "PoE-Switch neu konfigurieren",
+        "data": {
+          "host": "IP-Adresse oder Hostname",
+          "password": "Passwort"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Keine Verbindung zum Switch, oder eine andere Sitzung ist aktiv.",
+      "invalid_auth": "Der Switch hat das Passwort abgelehnt.",
+      "unknown": "Unerwarteter Fehler, siehe Log."
+    },
+    "abort": {
+      "already_configured": "Dieser Switch ist bereits eingerichtet.",
+      "not_supported": "Dieses Gerät ist kein unterstützter PoE-Switch.",
+      "wrong_device": "Das ist ein anderer Switch als der eingerichtete.",
+      "reauth_successful": "Passwort aktualisiert.",
+      "reconfigure_successful": "Einstellungen aktualisiert."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Optionen",
+        "data": {
+          "scan_interval": "Abfrageintervall (Sekunden)"
+        },
+        "data_description": {
+          "scan_interval": "Der Switch ist langsam und erlaubt nur eine Sitzung. Empfohlen sind 30 Sekunden oder mehr."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "voltage": {
+        "name": "Eingangsspannung"
+      },
+      "total_power": {
+        "name": "PoE-Gesamtleistung"
+      },
+      "temperature": {
+        "name": "Temperatur"
+      },
+      "port_power": {
+        "name": "Port {port} Leistung"
+      },
+      "port_speed": {
+        "name": "Port {port} Verbindungsgeschwindigkeit"
+      },
+      "port_tx": {
+        "name": "Port {port} Senderate"
+      },
+      "port_rx": {
+        "name": "Port {port} Empfangsrate"
+      }
+    },
+    "binary_sensor": {
+      "port_link": {
+        "name": "Port {port} Verbindung"
+      },
+      "cloud": {
+        "name": "Cloud-Verbindung"
+      }
+    },
+    "switch": {
+      "port_poe": {
+        "name": "Port {port} PoE"
+      },
+      "port_flow_control": {
+        "name": "Port {port} Flusssteuerung"
+      },
+      "lldp": {
+        "name": "LLDP"
+      },
+      "storm_control": {
+        "name": "Storm-Control"
+      },
+      "watchdog": {
+        "name": "PoE-Watchdog"
+      },
+      "ai_auto_extend": {
+        "name": "PoE-Auto-Extend"
+      },
+      "port_extend": {
+        "name": "Port {port} Extend"
+      }
+    },
+    "number": {
+      "power_warn": {
+        "name": "Warnschwelle Gesamtleistung"
+      },
+      "port_priority": {
+        "name": "Port {port} Priorität"
+      },
+      "port_limit_up": {
+        "name": "Port {port} Upload-Limit"
+      },
+      "port_limit_down": {
+        "name": "Port {port} Download-Limit"
+      }
+    },
+    "select": {
+      "port_mode": {
+        "name": "Port {port} Modus",
+        "state": {
+          "down": "Aus",
+          "10m_half": "10M Halbduplex",
+          "10m_full": "10M Vollduplex",
+          "100m_half": "100M Halbduplex",
+          "100m_full": "100M Vollduplex",
+          "1000m_full": "1000M Vollduplex"
+        }
+      }
+    },
+    "button": {
+      "port_restart": {
+        "name": "Port {port} neu starten"
+      },
+      "reboot": {
+        "name": "Neustart"
+      }
+    }
+  },
+  "exceptions": {
+    "cannot_connect": {
+      "message": "Der Switch hat die Verbindung nicht angenommen. Meist ist eine andere Sitzung aktiv (zum Beispiel die Weboberfläche im Browser): Der Switch erlaubt nur eine Anmeldung gleichzeitig. Home Assistant versucht es automatisch erneut."
+    },
+    "api_error": {
+      "message": "Der Switch hat mit einem Fehler geantwortet: {error}"
+    },
+    "write_failed": {
+      "message": "Der Switch hat die Änderung nicht angenommen: {error}"
+    }
+  }
+}

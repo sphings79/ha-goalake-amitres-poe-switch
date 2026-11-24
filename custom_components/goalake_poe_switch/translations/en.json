@@ -1,0 +1,162 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add PoE switch",
+        "description": "Enter the address and the web password of the switch. The switch allows only one login at a time: a browser session can lock this integration out.",
+        "data": {
+          "host": "IP address or host name",
+          "password": "Password"
+        }
+      },
+      "discovery_confirm": {
+        "title": "PoE switch found",
+        "description": "A PoE switch was found at {host}. Enter its web password.",
+        "data": {
+          "password": "Password"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Password required",
+        "description": "The switch at {host} rejected the password. Enter the current web password.",
+        "data": {
+          "password": "Password"
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigure PoE switch",
+        "data": {
+          "host": "IP address or host name",
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect to the switch, or another session is active.",
+      "invalid_auth": "The switch rejected the password.",
+      "unknown": "Unexpected error, see the log."
+    },
+    "abort": {
+      "already_configured": "This switch is already configured.",
+      "not_supported": "This device is not a supported PoE switch.",
+      "wrong_device": "This is a different switch than the configured one.",
+      "reauth_successful": "Password updated.",
+      "reconfigure_successful": "Settings updated."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options",
+        "data": {
+          "scan_interval": "Polling interval (seconds)"
+        },
+        "data_description": {
+          "scan_interval": "The switch is slow and allows one session only. 30 seconds or more is recommended."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "voltage": {
+        "name": "Supply voltage"
+      },
+      "total_power": {
+        "name": "Total PoE power"
+      },
+      "temperature": {
+        "name": "Temperature"
+      },
+      "port_power": {
+        "name": "Port {port} power"
+      },
+      "port_speed": {
+        "name": "Port {port} link speed"
+      },
+      "port_tx": {
+        "name": "Port {port} transmit rate"
+      },
+      "port_rx": {
+        "name": "Port {port} receive rate"
+      }
+    },
+    "binary_sensor": {
+      "port_link": {
+        "name": "Port {port} link"
+      },
+      "cloud": {
+        "name": "Cloud connection"
+      }
+    },
+    "switch": {
+      "port_poe": {
+        "name": "Port {port} PoE"
+      },
+      "port_flow_control": {
+        "name": "Port {port} flow control"
+      },
+      "lldp": {
+        "name": "LLDP"
+      },
+      "storm_control": {
+        "name": "Storm control"
+      },
+      "watchdog": {
+        "name": "PoE watchdog"
+      },
+      "ai_auto_extend": {
+        "name": "PoE auto extend"
+      },
+      "port_extend": {
+        "name": "Port {port} extend"
+      }
+    },
+    "number": {
+      "power_warn": {
+        "name": "Total power warning threshold"
+      },
+      "port_priority": {
+        "name": "Port {port} priority"
+      },
+      "port_limit_up": {
+        "name": "Port {port} upload limit"
+      },
+      "port_limit_down": {
+        "name": "Port {port} download limit"
+      }
+    },
+    "select": {
+      "port_mode": {
+        "name": "Port {port} mode",
+        "state": {
+          "down": "Down",
+          "10m_half": "10M half duplex",
+          "10m_full": "10M full duplex",
+          "100m_half": "100M half duplex",
+          "100m_full": "100M full duplex",
+          "1000m_full": "1000M full duplex"
+        }
+      }
+    },
+    "button": {
+      "port_restart": {
+        "name": "Restart port {port}"
+      },
+      "reboot": {
+        "name": "Reboot"
+      }
+    }
+  },
+  "exceptions": {
+    "cannot_connect": {
+      "message": "The switch did not accept the connection. Usually another session is active (for example the web interface in a browser): the switch allows only one login at a time. Home Assistant tries again automatically."
+    },
+    "api_error": {
+      "message": "The switch answered with an error: {error}"
+    },
+    "write_failed": {
+      "message": "The switch did not accept the change: {error}"
+    }
+  }
+}
