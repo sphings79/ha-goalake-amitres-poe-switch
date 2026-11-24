@@ -12,10 +12,14 @@ shot() { # name width height query
     "http://127.0.0.1:8765/frontend/demo/index.html?$4" >/dev/null 2>&1
   echo "docs/images/$1.png"
 }
-shot panel-overview 1100 520 "view=overview&scheme=reactor&mode=dark&ha=dark"
-shot panel-device 1100 900 "view=device&port=1&scheme=reactor&mode=dark&ha=dark&devices=1"
+shot panel-overview 1100 520 "view=overview&scheme=reactor&mode=light&ha=light"
+shot panel-device 1100 900 "view=device&port=1&scheme=reactor&mode=light&ha=light&devices=1"
 shot panel-device-light 1100 900 "view=device&port=2&scheme=cockpit&mode=light&ha=light&devices=1"
-shot panel-settings 1100 700 "view=settings&scheme=plasma&mode=dark&ha=dark&devices=1"
-shot card-dark 600 760 "kind=card&ha=dark"
+shot panel-settings 1100 700 "view=settings&scheme=glacier&mode=light&ha=light&devices=1"
 shot card-light 600 760 "kind=card&ha=light"
+# social preview image of the repository (1280 x 640), needs the screenshots above
+"$BROWSER" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 \
+  --window-size=1280,640 --virtual-time-budget=4000 --screenshot=assets/social-preview.png \
+  "http://127.0.0.1:8765/frontend/demo/social.html" >/dev/null 2>&1
+echo assets/social-preview.png
 kill $SERVER

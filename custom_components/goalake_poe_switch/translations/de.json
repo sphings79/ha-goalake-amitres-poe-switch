@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "PoE-Switch hinzufügen",
-        "description": "Gib die Adresse und das Web-Passwort des Switches ein. Der Switch erlaubt nur eine Anmeldung gleichzeitig: Eine Browser-Sitzung kann diese Integration aussperren.",
+        "description": "Gib die Adresse und das Web-Passwort des Switches ein. Der Switch erlaubt nur eine Anmeldung gleichzeitig: Eine Browser-Sitzung kann diese Integration aussperren. Der Modus-Schalter am Gerät muss auf Web stehen. Wenn du das Passwort in der Weboberfläche des Switches geändert hast: Melde dich dort ab, einmal mit dem neuen Passwort an und wieder ab, sonst scheitert diese Anmeldung.",
         "data": {
           "host": "IP-Adresse oder Hostname",
           "password": "Passwort"
@@ -18,7 +18,7 @@
       },
       "reauth_confirm": {
         "title": "Passwort erforderlich",
-        "description": "Der Switch unter {host} hat das Passwort abgelehnt. Gib das aktuelle Web-Passwort ein.",
+        "description": "Der Switch unter {host} hat das Passwort abgelehnt. Gib das aktuelle Web-Passwort ein. Wenn du das Passwort in der Weboberfläche des Switches geändert hast: Melde dich dort ab, einmal mit dem neuen Passwort an und wieder ab, sonst scheitert diese Anmeldung.",
         "data": {
           "password": "Passwort"
         }

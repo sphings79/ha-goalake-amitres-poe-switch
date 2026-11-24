@@ -34,11 +34,16 @@ Benötigt Home Assistant 2025.9 oder neuer (entwickelt und getestet mit 2026.10 
 
 ## Einrichtung
 
-1. Vergib zuerst in der Weboberfläche des Switches ein Passwort (Adresse im Browser öffnen).
-2. *Einstellungen → Geräte & Dienste → Integration hinzufügen → Goalake Amitres PoE Switch*.
-3. Den Switch aus der Liste wählen (oder seine Adresse eintippen) und das Web-Passwort eingeben.
+1. Stelle den **Modus-Schalter am Gerät auf „Web"**.
+2. Vergib zuerst in der Weboberfläche des Switches ein Passwort (Adresse im Browser öffnen).
+3. *Einstellungen → Geräte & Dienste → Integration hinzufügen → Goalake Amitres PoE Switch*.
+4. Den Switch aus der Liste wählen (oder seine Adresse eintippen) und das Web-Passwort eingeben.
 
 Ein später gefundener Switch erscheint als entdecktes Gerät. Das Abfrageintervall (Standard 30 s) stellst du in den Optionen ein.
+
+### Passwort ändern
+
+Wenn du das Passwort in der Weboberfläche des Switches änderst, **melde dich ab, einmal mit dem neuen Passwort an und wieder ab**. Erst dann klappt die Anmeldung der Integration mit dem neuen Passwort.
 
 ### Nur eine Anmeldung gleichzeitig
 
@@ -59,7 +64,7 @@ Der Seitenleisten-Eintrag **PoE Switch** zeigt alle Switches, die Ports mit Link
 
 ## Lovelace-Karte
 
-![Karte](docs/images/card-dark.png)
+![Karte](docs/images/card-light.png)
 
 Im Karten-Dialog *PoE Switch* wählen. Der Editor bietet Switch, Titel, die angezeigten Ports, ob PoE auf der Karte geschaltet werden darf (nur Administratoren)
 und ein Farbschema (Standard: folgt deinem Theme).
@@ -103,7 +108,8 @@ VLAN-Bearbeitung (geplant für 1.1.0), Loop-Erkennung, einen einzelnen Port ganz
 | Meldung | Bedeutung |
 |---|---|
 | „Der Switch hat die Verbindung nicht angenommen ..." | Eine andere Sitzung ist aktiv (Browser?) oder der Switch startet neu. Wird automatisch wiederholt. |
-| „Der Switch hat das Passwort abgelehnt." | Falsches Passwort; Home Assistant bietet eine erneute Anmeldung an. |
+| „Der Switch hat das Passwort abgelehnt." | Falsches Passwort, oder das Passwort wurde geändert, ohne das beschriebene Abmelden / Anmelden / Abmelden. Home Assistant bietet eine erneute Anmeldung an. |
+| Der Switch ist gar nicht erreichbar | Prüfe, ob der Modus-Schalter am Gerät auf „Web" steht. |
 | Im Hinzufügen-Dialog wird nichts gefunden | Die Suche braucht Home Assistant im selben Netzsegment (kein NAT, kein VLAN ohne Multicast). Gib stattdessen die Adresse ein. |
 
 ## Entwicklung
@@ -117,6 +123,11 @@ scripts/make_screenshots.sh          # Screenshots aus Beispieldaten
 ```
 
 Das Protokoll steht in [docs/protocol.md](docs/protocol.md). `dev-sim/` enthält einen Mock-Switch und Lese-/Schreib-Proben für ein echtes Gerät.
+
+## Unterstützen
+
+Wenn dir die Integration nützt, gib dem Repository bitte einen **Stern auf GitHub**: So finden andere sie leichter. Du kannst mir auch
+[einen Kaffee spendieren](https://buymeacoffee.com/sphings).
 
 ## Lizenz
 

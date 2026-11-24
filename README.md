@@ -34,11 +34,16 @@ Requires Home Assistant 2025.9 or newer (developed and tested with 2026.10 and 2
 
 ## Setup
 
-1. Give the switch a web password in its own web interface first (open its address in a browser).
-2. *Settings → Devices & services → Add integration → Goalake Amitres PoE Switch*.
-3. Pick the switch from the list (or type its address) and enter the web password.
+1. Set the **mode switch on the device to "Web"**.
+2. Give the switch a web password in its own web interface first (open its address in a browser).
+3. *Settings → Devices & services → Add integration → Goalake Amitres PoE Switch*.
+4. Pick the switch from the list (or type its address) and enter the web password.
 
 A switch that is found later shows up as a discovered device. The polling interval (default 30 s) can be changed in the options.
+
+### Changing the password
+
+If you change the password in the switch's web interface, **log out, log in once with the new password and log out again**. Only then does the login of the integration work with the new password.
 
 ### One login at a time
 
@@ -59,7 +64,7 @@ only administrators can change something. Colour scheme, light/dark and language
 
 ## Lovelace card
 
-![Card](docs/images/card-dark.png)
+![Card](docs/images/card-light.png)
 
 Add *PoE Switch* from the card picker. The editor lets you choose the switch, a title, the ports to show, whether PoE may be switched from
 the card (administrators only) and a colour scheme (default: follows your theme).
@@ -103,7 +108,8 @@ VLAN editing (planned for 1.1.0), loop detection, switching a single port off co
 | Message | Meaning |
 |---|---|
 | "The switch did not accept the connection ..." | Another session is active (browser?), or the switch is restarting. Retried automatically. |
-| "The switch rejected the password." | Wrong password; Home Assistant offers a re-authentication. |
+| "The switch rejected the password." | Wrong password, or the password was changed without the log out / log in / log out round described above. Home Assistant offers a re-authentication. |
+| Nothing is reachable at all | Check that the mode switch on the device is set to "Web". |
 | Nothing found in the add dialog | The search needs Home Assistant in the same network segment (no NAT, no VLAN without multicast). Type the address instead. |
 
 ## Development
@@ -117,6 +123,11 @@ scripts/make_screenshots.sh          # screenshots from sample data
 ```
 
 The protocol is documented in [docs/protocol.md](docs/protocol.md). `dev-sim/` contains a mock switch and read/write probes for a real device.
+
+## Support
+
+If this integration is useful to you, please give the repository a **star on GitHub**: it helps others to find it. You can also
+[buy me a coffee](https://buymeacoffee.com/sphings).
 
 ## License
 

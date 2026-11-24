@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.1
+
+- Brighter icon, light-theme screenshots in the README, social preview image.
+- Hints in the setup and re-authentication dialogs and in the README: the mode switch on the device must be set to Web, and after a
+  password change in the switch's web interface one has to log out, log in with the new password and log out again.
+- Sponsoring link (Buy Me a Coffee) and a request for a star.
+
 ## 1.0.0
 
 First release.

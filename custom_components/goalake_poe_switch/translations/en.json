@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Add PoE switch",
-        "description": "Enter the address and the web password of the switch. The switch allows only one login at a time: a browser session can lock this integration out.",
+        "description": "Enter the address and the web password of the switch. The switch allows only one login at a time: a browser session can lock this integration out. The mode switch on the device must be set to Web. If you changed the password in the switch's web interface: log out there, log in once with the new password and log out again, otherwise this login fails.",
         "data": {
           "host": "IP address or host name",
           "password": "Password"
@@ -18,7 +18,7 @@
       },
       "reauth_confirm": {
         "title": "Password required",
-        "description": "The switch at {host} rejected the password. Enter the current web password.",
+        "description": "The switch at {host} rejected the password. Enter the current web password. If you changed the password in the switch's web interface: log out there, log in once with the new password and log out again, otherwise this login fails.",
         "data": {
           "password": "Password"
         }
