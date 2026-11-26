@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import itertools
 import json
-from unittest.mock import AsyncMock, patch
+from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 from homeassistant.const import CONF_HOST, CONF_PASSWORD
@@ -171,7 +171,8 @@ async def test_panel_is_registered_once_and_removed(hass: HomeAssistant, device,
     if not bundle.is_file():
         pytest.skip("frontend bundle not built")
     hass.config.components.update({"panel_custom", "http"})
-    hass.http = AsyncMock()
+    # only this method of the http component is a coroutine, an AsyncMock for all would leave others unawaited
+    hass.http = MagicMock(async_register_static_paths=AsyncMock())
     with (
         patch.object(panel.panel_custom, "async_register_panel", AsyncMock()) as register,
         patch.object(panel.frontend, "async_remove_panel") as remove,
