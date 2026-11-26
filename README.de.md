@@ -25,8 +25,10 @@ Sensoren, PoE-Steuerung pro Port, ein Dashboard-Panel und eine Lovelace-Karte. O
 
 ## Installation
 
-**HACS:** HACS → drei Punkte → *Benutzerdefinierte Repositories* → `https://github.com/sphings79/ha-goalake-amitres-poe-switch` als *Integration* hinzufügen →
-*Goalake Amitres PoE Switch* installieren → Home Assistant neu starten.
+**HACS:** HACS öffnen → nach *Goalake Amitres PoE Switch* suchen → herunterladen → Home Assistant neu starten.
+
+Findet die Suche nichts, füge es zuerst als benutzerdefiniertes Repository hinzu: HACS → drei Punkte → *Benutzerdefinierte Repositories* →
+`https://github.com/sphings79/ha-goalake-amitres-poe-switch` als *Integration*.
 
 **Manuell:** `custom_components/goalake_poe_switch` in den Ordner `custom_components` deiner Home Assistant kopieren und neu starten.
 
